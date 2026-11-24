@@ -43,6 +43,12 @@
 | 26 | Бидай өнімін болжаймыз: ЖИ ауыл шаруашылығында | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/amirtemir1996n3-dotcom/mashina-qalai-uirenedi/blob/main/notebooks/ch26.ipynb) |
 | 27 | ЖИ көмекшісімен сауатты жұмыс: промпт жазу өнері | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/amirtemir1996n3-dotcom/mashina-qalai-uirenedi/blob/main/notebooks/ch27.ipynb) |
 
+## Қосымша модуль: қолданбалы криптография
+
+| Модуль | Тақырып | Блокнот |
+|---|---|---|
+| К1–К3 | [Қолданбалы криптография негіздері](kripto/README.md): Цезарь шифры мен жиілік талдау, хэш-функциялар, ашық кілт пен цифрлық қолтаңба | [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/amirtemir1996n3-dotcom/mashina-qalai-uirenedi/blob/main/notebooks/kripto.ipynb) |
+
 ## Деректер (`data/`)
 
 | Файл | Сипаттама |

@@ -104,7 +104,7 @@ def main():
     if len(sys.argv) < 2 or sys.argv[1] not in BOOKS:
         sys.exit(__doc__)
     book, only = sys.argv[1], set(sys.argv[2:])
-    paths = sorted(BOOKS[book].glob("ch*.ipynb"))
+    paths = sorted(BOOKS[book].glob("ch*.ipynb")) + sorted(BOOKS[book].glob("kripto*.ipynb"))
     if only:
         paths = [p for p in paths if p.stem in only]
     results = []
