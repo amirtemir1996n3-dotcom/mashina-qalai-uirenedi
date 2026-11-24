@@ -1,0 +1,70 @@
+name: Блокноттарды тексеру
+
+# Айына бір рет барлық блокнот кітапханалардың соңғы нұсқаларымен іске қосылады.
+# Бір блокнот бұзылса, тексеру сәтсіз аяқталып, «Issues» бөлімінде хабарлама ашылады.
+on:
+  schedule:
+    - cron: "17 2 1 * *"        # әр айдың 1-күні, 02:17 UTC (Астана уақытымен 07:17)
+  workflow_dispatch:            # Actions бетінен қолмен іске қосу
+  push:
+    branches: [main]
+    paths:
+      - "notebooks/**"
+      - "vol2/notebooks/**"
+      - "vol2/gpt.py"
+      - "data/**"
+      - "tools/run_notebooks.py"
+      - "tools/requirements-*.txt"
+      - ".github/workflows/notebooks.yml"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  notebooks:
+    name: ${{ matrix.book }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    strategy:
+      fail-fast: false
+      matrix:
+        book: [vol1, vol2]
+    env:
+      MPLBACKEND: Agg
+      TF_CPP_MIN_LOG_LEVEL: "2"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: tools/requirements-${{ matrix.book }}.txt
+
+      - name: Кітапханаларды орнату
+        run: pip install -r tools/requirements-${{ matrix.book }}.txt
+
+      - name: Блокноттарды іске қосу
+        run: python tools/run_notebooks.py ${{ matrix.book }}
+
+      - name: Есепті сақтау
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-${{ matrix.book }}
+          path: report-${{ matrix.book }}.md
+          if-no-files-found: ignore
+
+      - name: Бұзылған блокнот туралы хабарлама ашу
+        if: failure() && github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo "Айлық автоматты тексеру кезінде блокноттардың бірі қатемен аяқталды."
+            echo "Толық журнал: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            echo
+            cat report-${{ matrix.book }}.md 2>/dev/null || echo "Есеп жасалмады: кітапханаларды орнату кезінде қате болуы мүмкін."
+          } > issue.md
+          gh issue create --title "Блокноттар бұзылды: ${{ matrix.book }}, $(date +%Y-%m)" --body-file issue.md

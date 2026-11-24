@@ -1,0 +1,12 @@
+# 1-том: Google Colab-тағыдай кітапханалар (нұсқалары әдейі бекітілмеген:
+# тексерудің мақсаты — жаңа нұсқалармен бұзылған кодты уақытында табу)
+numpy
+pandas
+scikit-learn
+matplotlib
+pillow
+openpyxl
+requests
+tensorflow
+nbclient
+ipykernel

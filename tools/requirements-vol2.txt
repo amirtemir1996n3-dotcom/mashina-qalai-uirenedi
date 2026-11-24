@@ -1,0 +1,9 @@
+# 2-том: PyTorch (процессорлық нұсқа) және Colab-тағы негізгі кітапханалар
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch
+numpy
+scikit-learn
+matplotlib
+pillow
+nbclient
+ipykernel

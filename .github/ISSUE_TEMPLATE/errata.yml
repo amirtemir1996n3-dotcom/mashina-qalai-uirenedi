@@ -1,0 +1,62 @@
+name: Кітаптағы қате
+description: Мәтіндегі, формуладағы, кодтағы немесе сызбадағы қатені хабарлау
+title: "[Қате] "
+labels: ["қате"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Рақмет! Әр хабарлама кітаптың келесі басылымын жақсартады.
+        Расталған қателер [ERRATA.md](https://github.com/amirtemir1996n3-dotcom/mashina-qalai-uirenedi/blob/main/ERRATA.md) бетінде жарияланады.
+  - type: dropdown
+    id: book
+    attributes:
+      label: Кітап
+      options:
+        - "Машина қалай үйренеді? (1-том)"
+        - "Машина қалай үйренеді? 2-том. Генеративті жасанды интеллект"
+        - "Машина қалай үйренеді? Жас зерттеушіге (5–7-сыныптар)"
+        - "Мұғалімге арналған нұсқаулық"
+        - "Colab блокноты немесе деректер"
+    validations:
+      required: true
+  - type: input
+    id: edition
+    attributes:
+      label: Басылым
+      description: Титул бетінде және екінші бетте көрсетілген.
+      value: "1-басылым, 2026"
+    validations:
+      required: true
+  - type: input
+    id: place
+    attributes:
+      label: Беті, тарауы немесе блокноты
+      placeholder: "Мысалы: 142-бет, 12-тарау немесе vol2/notebooks/ch12.ipynb"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Қатенің түрі
+      options:
+        - Мәтін (емле, түсініксіз сөйлем)
+        - Факт, сан немесе дереккөз
+        - Формула
+        - Код немесе блокнот
+        - Сурет немесе сызба
+        - Басқа
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: Не қате?
+      description: Қате жерді дәл көшіріп жазыңыз немесе суретін қосыңыз. Код қатесі болса, қате хабарламасын толық көшіріңіз.
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Қалай түзету керек?
+      description: Міндетті емес. Дереккөз болса, сілтемесін қосыңыз.
