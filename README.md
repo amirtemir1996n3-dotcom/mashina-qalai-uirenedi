@@ -2,6 +2,8 @@
 
 [![Блокноттарды тексеру](https://github.com/amirtemir1996n3-dotcom/mashina-qalai-uirenedi/actions/workflows/notebooks.yml/badge.svg)](https://github.com/amirtemir1996n3-dotcom/mashina-qalai-uirenedi/actions/workflows/notebooks.yml)
 
+**Автор:** Жандар Тұңғышбай Ахметжанұлы
+
 Бұл репозиторийде «Жасанды интеллект негіздері. Машиналық оқыту мен нейрондық желілер: оқушыларға арналған практикалық кітап» кітабының
 әр тарауына арналған Google Colab блокноттары және жобалардың деректер жиындары сақталған.
 
